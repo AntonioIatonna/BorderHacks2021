@@ -22,14 +22,11 @@ const plotPoint = async (id) => {
 
 };
 
-for(i =0;i<700;i++){
-  setTimeout(function () {
-    plotPoint(i)
-}, 10000);
+
+function sleepFor(sleepDuration){
+  var now = new Date().getTime();
+  while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
 }
-
-
-
 
 
 function initMap() {
@@ -37,4 +34,19 @@ function initMap() {
     center: { lat: 42.29086877112532, lng: -83.00613243683966 },
     zoom: 13,
   });
+
+ myFunction();
+}
+
+var myVar;
+
+function myFunction() {
+  myVar = setInterval(Loop(), 1000);
+}
+
+var i = 0
+function Loop(){
+  plotPoint(i)
+  i++;
+  setTimeout(Loop, 1000)
 }
