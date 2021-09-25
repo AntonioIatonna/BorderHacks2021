@@ -576,15 +576,6 @@
    "Truck": "1109"
  },
  {
-   "Latitude": "Latitude",
-   "Longitude": "Longitude",
-   "Date time": "Date time",
-   "Plow status": "Plow status",
-   "Spreader status": "Spreader status",
-   "Engine status": "Engine status",
-   "Truck": "Truck"
- },
- {
    "Latitude": "42.2777",
    "Longitude": "-83.08192",
    "Date time": "2021-03-22 13:00:02",
@@ -2896,15 +2887,6 @@
    "Spreader status": "False",
    "Engine status": "True",
    "Truck": "5446"
- },
- {
-   "Latitude": "Latitude",
-   "Longitude": "Longitude",
-   "Date time": "Date time",
-   "Plow status": "Plow status",
-   "Spreader status": "Spreader status",
-   "Engine status": "Engine status",
-   "Truck": "Truck"
  },
  {
    "Latitude": "42.29727",
@@ -5443,15 +5425,6 @@
    "Spreader status": "False",
    "Engine status": "True",
    "Truck": "6527"
- },
- {
-   "Latitude": "Latitude",
-   "Longitude": "Longitude",
-   "Date time": "Date time",
-   "Plow status": "Plow status",
-   "Spreader status": "Spreader status",
-   "Engine status": "Engine status",
-   "Truck": "Truck"
  },
  {
    "Latitude": "42.27249",
