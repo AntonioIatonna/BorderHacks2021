@@ -22,7 +22,12 @@ const plotPoint = async (id) => {
 
 };
 
-plotPoint(120);
+for(i =0;i<700;i++){
+  setTimeout(function () {
+    plotPoint(i)
+}, 10000);
+}
+
 
 
 
