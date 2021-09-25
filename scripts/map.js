@@ -1,10 +1,9 @@
 let map;
 
-$.getJSON("../data/snowplow-2021-03-22_2021-03-28.json", function(json) {
-    var data = json
+const data = $.getJSON("../data/snowplow-2021-03-22_2021-03-28.json", function(json) {
     console.log(data);
 });
-
+console.log(data);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
