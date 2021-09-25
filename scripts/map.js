@@ -1,10 +1,15 @@
 let map;
 
-fetch("../data/snowplow-2021-03-22_2021-03-28.json")
-    .then((response) => response.json())
-    .then((json) => {
-        console.log(json);
-    });
+const data = getData();
+
+function getData() {
+
+    const data = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
+        .then((response) => response.json())
+    return data;
+}
+
+console.log(data);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
