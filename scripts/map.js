@@ -1,5 +1,7 @@
 let map;
 
+document.querySelector("body").style.backgroundColor = "#121212";
+document.querySelector("#map").style.borderRadius = "20px";
 
   const address = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
   .then((response) => response.json())

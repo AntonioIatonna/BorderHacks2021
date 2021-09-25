@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles/style.css">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
     <title>Snow Plowing Map - Windsor</title>
 </head>
 <body>
-    <h3>Snow Plow Tracker</h3>
+    <div id="title"><h1>Snow Plow Tracker</h1></div>
     <!--The div element for the map -->
-    <div id="map"></div>
+    <div id="map" style="color: #121212;"></div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTxpGcNrQotMopayyB0oqDzDeUvRs8PMU&callback=initMap&libraries=&v=weekly" async></script>
   <script src="scripts/map.js"></script>
+  <script src="scripts/bootstrap.bundle.min.js"></script>
 </body>
 </html>
