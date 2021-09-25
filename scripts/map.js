@@ -9,6 +9,11 @@ document.querySelector("#map").style.borderRadius = "20px";
     return data;
   });
 
+  const flightPlanCoordinates = [
+  
+  ];
+
+
 const plotPoint = async (id) => {
   const a = await address;
   //write code to plot the point here...
@@ -27,11 +32,7 @@ const plotPoint = async (id) => {
   // const path = poly.getPath();
   // path.push(myLatLng)
 
-  const flightPlanCoordinates = [
-    { lat: 37.772, lng: -122.214 }
-  ];
-
-  flightPlanCoordinates.append(myLatLng)
+  flightPlanCoordinates.push(myLatLng)
   
   // new google.maps.Marker({
   //   position: myLatLng,
