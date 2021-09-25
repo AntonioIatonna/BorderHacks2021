@@ -1,15 +1,13 @@
 let map;
 
-const data = getData();
-
-function getData() {
-
-    const data = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
-        .then((response) => response.json())
-    return data;
+async function getData() {
+  const response = await fetch('../data/snowplow-2021-03-22_2021-03-28.json');
+  const data = await response.json();
+  return data 
+  // logs [{ name: 'Joker'}, { name: 'Batman' }]
 }
 
-console.log(data);
+console.log(getData[0]);
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
