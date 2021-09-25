@@ -12,9 +12,17 @@ const plotPoint = async (id) => {
   //write code to plot the point here...
   var coordinates = [a[id].Latitude, a[id].Longitude];
   console.log(coordinates);
+
+  const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) };
+  new google.maps.Marker({
+    position: myLatLng,
+    map,
+    title: "Hello World!",
+  });
+
 };
 
-plotPoint(0);
+plotPoint(120);
 
 
 
