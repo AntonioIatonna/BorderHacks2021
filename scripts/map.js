@@ -3,11 +3,11 @@ let map;
 async function getData() {
   const response = await fetch('../data/snowplow-2021-03-22_2021-03-28.json');
   const data = await response.json();
-  return data 
+  console.log(data[0])
   // logs [{ name: 'Joker'}, { name: 'Batman' }]
 }
 
-console.log(getData[0]);
+getData();
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
