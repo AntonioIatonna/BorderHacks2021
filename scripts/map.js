@@ -16,11 +16,36 @@ const plotPoint = async (id) => {
   console.log(coordinates);
 
   const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) };
-  new google.maps.Marker({
-    position: myLatLng,
-    map,
-    title: "Hello World!",
+ 
+  // poly = new google.maps.Polyline({
+  //   strokeColor: "#000000",
+  //   strokeOpacity: 1.0,
+  //   strokeWeight: 3,
+  // });
+
+  // poly.setMap(map);
+  // const path = poly.getPath();
+  // path.push(myLatLng)
+
+  const flightPlanCoordinates = [
+    { lat: 37.772, lng: -122.214 }
+  ];
+
+  flightPlanCoordinates.append(myLatLng)
+  
+  // new google.maps.Marker({
+  //   position: myLatLng,
+  //   map,
+  //   title: "Hello World!",
+  // });
+  const flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: "#FF0000",
+    strokeOpacity: 1.0,
+    strokeWeight: 2,
   });
+  flightPath.setMap(map);
 
 };
 
