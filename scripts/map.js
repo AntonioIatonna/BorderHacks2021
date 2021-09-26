@@ -11,43 +11,51 @@ document.querySelector("#map").style.borderRadius = "20px";
 
   const flightPlanCoordinates = [];
 
-var currentPlow;
+var plowList = [];
 var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
-// const plow = {
-//   number: 1111,
-//   r: 102,
-//   g: 94,
-//   b: 50
-// }
+function plow(num){
+  this.number = num;
+  this.r = Math.floor(Math.random() * 255);
+  this.g =  Math.floor(Math.random() * 255);
+  this.b = Math.floor(Math.random() * 255);
+  this.array = [];
+}
 
 const plotPoint = async (id) => {
   const a = await address;
   //write code to plot the point here...
   var coordinates = [a[id].Latitude, a[id].Longitude];
-  console.log(a[id].Truck);
+  var currentPlow = a[id].Truck;
+  console.log(currentPlow);
   
   
   const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) };
- 
-  console.log(a[id].Truck)
-  if(currentPlow == a[id].Truck){
-    flightPlanCoordinates.push(myLatLng);
-  }else{
-    console.log("Cut off");
-    lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)];
-    flightPlanCoordinates.splice(myLatLng);
-    flightPlanCoordinates.push(myLatLng);
 
+  var found = false
+  var j =  0
+  while(j<plowList.length){
+    if(currentPlow == plowList[j].number){
+      plowList[j].array.push(myLatLng)
+      found = true
+      break;
+    }
+    j++;
   }
-  
-  currentPlow  = a[id].Truck;
+
+  if(found == false){
+    plowList.push(new plow(currentPlow));
+    plowList[j].array.push(myLatLng)
+    console.log("Add element");
+  }
+  console.log(plowList[j].array)
+
   // new google.maps.Marker({
   //   position: myLatLng,
   //   map,
   //   title: "Hello World!",
   // });
   const flightPath = new google.maps.Polyline({
-    path: flightPlanCoordinates,
+    path: plowList[j].array,
     geodesic: true,
     strokeColor: "rgb(" + lineColour[0] + ", " + lineColour[1] + ", " + lineColour[2] + ")",
     strokeOpacity: 1.0,
