@@ -1,8 +1,8 @@
   /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 100%;
-  margin-top: 50px;
+  height: 110%;
+  margin-top: 20px;
   margin-left: 100px;
   margin-right: 100px;
   padding-top: 5%;
@@ -24,7 +24,8 @@ body {
 }
 
 #title {
-padding: 10px;
+padding-top: 20px;
+padding-bottom: 0px;
 z-index: 2;
 text-align: center;
 background-color: #121212;
