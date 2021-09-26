@@ -6,6 +6,12 @@
   margin-left: 100px;
   margin-right: 100px;
   padding-top: 5%;
+  z-index: 2;
+}
+
+#logo {
+border-radius: 15px;
+width: 150px;
 }
 
 /* Optional: Makes the sample page fill the window. */
@@ -19,6 +25,7 @@ body {
 
 #title {
 padding: 10px;
+z-index: 2;
 text-align: center;
 background-color: #121212;
 color:white
