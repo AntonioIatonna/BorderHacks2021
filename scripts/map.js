@@ -35,6 +35,7 @@ const plotPoint = async (id) => { //main plot point process
   var j =  0
   while(j<plowList.length){
     if(currentPlow == plowList[j].number){
+      // marker.setMap(null);
       plowList[j].array.push(myLatLng)
       found = true
       break;
@@ -48,12 +49,13 @@ const plotPoint = async (id) => { //main plot point process
     console.log("Add element");
   }
   console.log(plowList[j].array)
+ 
 
-  // new google.maps.Marker({
-  //   position: myLatLng,
-  //   map,
-  //   title: "Hello World!",
-  // });
+
+  const marker = new google.maps.Marker({
+    position: myLatLng,
+    title: plowList[j].Truck,
+  });
   const flightPath = new google.maps.Polyline({
     path: plowList[j].array,
     geodesic: true,
@@ -61,6 +63,8 @@ const plotPoint = async (id) => { //main plot point process
     strokeOpacity: 1.0,
     strokeWeight: 2,
   });
+
+  marker.setMap(map)
   flightPath.setMap(map);
 
 };
