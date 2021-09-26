@@ -33,7 +33,8 @@ const plotPoint = async (id) => {
   if(currentPlow == a[id].Truck){
     flightPlanCoordinates.push(myLatLng);
   }else{
-    console.log("Cut off")
+    console.log("Cut off");
+    lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)];
     flightPlanCoordinates.splice(myLatLng);
     flightPlanCoordinates.push(myLatLng);
 
@@ -48,7 +49,7 @@ const plotPoint = async (id) => {
   const flightPath = new google.maps.Polyline({
     path: flightPlanCoordinates,
     geodesic: true,
-    strokeColor: "rgb(" + lineColour[0] + ", " + lineColour[1] + ", " + lineColour[2],
+    strokeColor: "rgb(" + lineColour[0] + ", " + lineColour[1] + ", " + lineColour[2] + ")",
     strokeOpacity: 1.0,
     strokeWeight: 2,
   });
