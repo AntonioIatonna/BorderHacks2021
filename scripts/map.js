@@ -23,7 +23,7 @@ const plotPoint = async (id) => { //main plot point process
   const a = await address;
   var coordinates = [a[id].Latitude, a[id].Longitude]; //reads coordinates
   var currentPlow = a[id].Truck; //reads truck number
-  var saltSpreader = a[id]['Spreader status'];
+  var saltSpreader = a[id]['Spreader status']; //reads salt status
   console.log(currentPlow);
   console.log(saltSpreader);
   
