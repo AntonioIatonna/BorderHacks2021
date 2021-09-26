@@ -21,6 +21,8 @@ function plow(num){
   this.array = [];
 }
 
+const icon = ("../data/snow-plow-icon.jpg");
+
 const plotPoint = async (id) => { //main plot point process
   const a = await address;
   //write code to plot the point here...
@@ -55,6 +57,7 @@ const plotPoint = async (id) => { //main plot point process
   const marker = new google.maps.Marker({
     position: myLatLng,
     title: plowList[j].Truck,
+    icon: icon,
   });
   const flightPath = new google.maps.Polyline({
     path: plowList[j].array,
