@@ -3,7 +3,7 @@ let map;
 document.querySelector("body").style.backgroundColor = "#121212";
 document.querySelector("#map").style.borderRadius = "20px";
 
-const address = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
+const address = fetch("../data/snowplow-2021-01-18_2021-01-24.json")
 .then((response) => response.json())
 .then((data) => {
   return data;
