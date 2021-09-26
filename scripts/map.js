@@ -9,8 +9,8 @@ const address = fetch("../data/snowplow-2021-01-18_2021-01-24.json") // access d
   return data;
 });
 
-var plowList = [];
-function plow(num){
+var plowList = []; //creates plow array
+function plow(num){ //Randomizes route colours
   this.number = num;
   this.r = Math.floor(Math.random() * 255);
   this.g =  Math.floor(Math.random() * 255);
@@ -29,7 +29,7 @@ const plotPoint = async (id) => { //main plot point process
 
   var found = false
   var j =  0
-  while(j<plowList.length){ //creates array for each plow to be kept in
+  while(j<plowList.length){ //adds each plow to plow array
     if(currentPlow == plowList[j].number){
       plowList[j].markerArray[( plowList[j].markerArray.length - 1 )].setMap(null)
       plowList[j].pointsArray.push(myLatLng)
