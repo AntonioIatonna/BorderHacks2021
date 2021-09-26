@@ -22,6 +22,7 @@ function plow(num){
   this.markerArray = [];
 }
 
+const icon = ("../data/snow-plow-icon.jpg");
 
 const plotPoint = async (id) => { //main plot point process
   const a = await address;
@@ -58,10 +59,7 @@ const plotPoint = async (id) => { //main plot point process
     position: myLatLng,
     title: plowList[j].Truck,
     map: map,
-    icon:{
-      url: '../data/snow-plow-icon.jpg',
-      scaledSize : new google.maps.Size(22, 32),
-    }
+    icon: icon,
   });
   const flightPath = new google.maps.Polyline({
     path: plowList[j].pointsArray,
@@ -98,12 +96,12 @@ function initMap() { //display map
 var myVar;
 
 function myFunction() {
-  myVar = setInterval(Loop(), 15000); //time 1 second for testing
+  myVar = setInterval(Loop(), 1000); //time 1 second for testing
 }
 
 var i = 0
 function Loop(){
   plotPoint(i)
   i++;
-  setTimeout(Loop, 7500) //time 1 second for testing
+  setTimeout(Loop, 1000) //time 1 second for testing
 }
