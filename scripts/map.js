@@ -3,13 +3,13 @@ let map;
 document.querySelector("body").style.backgroundColor = "#121212";
 document.querySelector("#map").style.borderRadius = "20px";
 
-  const address = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
-  .then((response) => response.json())
-  .then((data) => {
-    return data;
-  });
+const address = fetch("../data/snowplow-2021-03-22_2021-03-28.json")
+.then((response) => response.json())
+.then((data) => {
+  return data;
+});
 
-  const flightPlanCoordinates = [];
+const flightPlanCoordinates = [];
 
 var plowList = [];
 var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
@@ -21,15 +21,15 @@ function plow(num){
   this.array = [];
 }
 
-const plotPoint = async (id) => {
+const plotPoint = async (id) => { //main plot point process
   const a = await address;
   //write code to plot the point here...
-  var coordinates = [a[id].Latitude, a[id].Longitude];
-  var currentPlow = a[id].Truck;
+  var coordinates = [a[id].Latitude, a[id].Longitude]; //reads coordinates
+  var currentPlow = a[id].Truck; //reads truck number
   console.log(currentPlow);
   
   
-  const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) };
+  const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) }; //sets coordinates
 
   var found = false
   var j =  0
@@ -66,30 +66,29 @@ const plotPoint = async (id) => {
 };
 
 
-function sleepFor(sleepDuration){
+function sleepFor(sleepDuration){ //what does this do?
   var now = new Date().getTime();
   while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
 }
 
 
-function initMap() {
+function initMap() { //display map
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 42.29086877112532, lng: -83.00613243683966 },
-    zoom: 13,
+  center: { lat: 42.29086877112532, lng: -83.00613243683966 },
+  zoom: 13,
   });
-
  myFunction();
 }
 
 var myVar;
 
 function myFunction() {
-  myVar = setInterval(Loop(), 1000);
+  myVar = setInterval(Loop(), 1000); //time 1 second for testing
 }
 
 var i = 0
 function Loop(){
   plotPoint(i)
   i++;
-  setTimeout(Loop, 1000)
+  setTimeout(Loop, 1000) //time 1 second for testing
 }
