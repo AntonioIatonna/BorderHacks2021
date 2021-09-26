@@ -3,16 +3,13 @@ let map;
 document.querySelector("body").style.backgroundColor = "#121212";
 document.querySelector("#map").style.borderRadius = "20px";
 
-const address = fetch("../data/snowplow-2021-01-18_2021-01-24.json")
+const address = fetch("../data/snowplow-2021-01-18_2021-01-24.json") // access data
 .then((response) => response.json())
 .then((data) => {
   return data;
 });
 
-const flightPlanCoordinates = [];
-
 var plowList = [];
-// var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
 function plow(num){
   this.number = num;
   this.r = Math.floor(Math.random() * 255);
@@ -22,20 +19,17 @@ function plow(num){
   this.markerArray = [];
 }
 
-
 const plotPoint = async (id) => { //main plot point process
   const a = await address;
-  //write code to plot the point here...
   var coordinates = [a[id].Latitude, a[id].Longitude]; //reads coordinates
   var currentPlow = a[id].Truck; //reads truck number
   console.log(currentPlow);
-  
   
   const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) }; //sets coordinates
 
   var found = false
   var j =  0
-  while(j<plowList.length){
+  while(j<plowList.length){ //creates array for each plow to be kept in
     if(currentPlow == plowList[j].number){
       plowList[j].markerArray[( plowList[j].markerArray.length - 1 )].setMap(null)
       plowList[j].pointsArray.push(myLatLng)
@@ -45,25 +39,23 @@ const plotPoint = async (id) => { //main plot point process
     j++;
   }
 
-  if(found == false){
+  if(found == false){ //differentiate between plows 
     plowList.push(new plow(currentPlow));
     plowList[j].pointsArray.push(myLatLng)
     console.log("Add element");
   }
   console.log(plowList[j].pointsArray)
- 
 
-
-  const marker = new google.maps.Marker({
+  const marker = new google.maps.Marker({ //create leading marker on each route
     position: myLatLng,
-    title: plowList[j].Truck,
+    title: "Truck: " + currentPlow,
     map: map,
     icon:{
       url: '../data/snow-plow-icon.jpg',
       scaledSize : new google.maps.Size(22, 32),
     }
   });
-  const flightPath = new google.maps.Polyline({
+  const plowedRoute = new google.maps.Polyline({ //creates trailing line to show plowed route
     path: plowList[j].pointsArray,
     geodesic: true,
     strokeColor: "rgb(" + plowList[j].r + ", " + plowList[j].g + ", " + plowList[j].b + ")",
@@ -73,19 +65,9 @@ const plotPoint = async (id) => { //main plot point process
 
   plowList[j].markerArray.push(marker);
 
-  flightPath.setMap(map);
+  plowedRoute.setMap(map);
 
 };
-
-
-
-
-
-// function sleepFor(sleepDuration){ //what does this do?
-//   var now = new Date().getTime();
-//   while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
-// }
-
 
 function initMap() { //display map
   map = new google.maps.Map(document.getElementById("map"), {
@@ -98,12 +80,12 @@ function initMap() { //display map
 var myVar;
 
 function myFunction() {
-  myVar = setInterval(Loop(), 15000); //time 1 second for testing
+  myVar = setInterval(Loop(), 5000); //time to retrieve next data point in milliseconds for proof of concept purposes to simulate live data
 }
 
 var i = 0
 function Loop(){
   plotPoint(i)
   i++;
-  setTimeout(Loop, 7500) //time 1 second for testing
+  setTimeout(Loop, 5000) //time to retrieve in milliseconds for proof of concept purposes to simulate live data
 }
