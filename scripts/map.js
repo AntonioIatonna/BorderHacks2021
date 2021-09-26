@@ -12,7 +12,7 @@ const address = fetch("../data/snowplow-2021-01-18_2021-01-24.json")
 const flightPlanCoordinates = [];
 
 var plowList = [];
-var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+// var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
 function plow(num){
   this.number = num;
   this.r = Math.floor(Math.random() * 255);
@@ -57,7 +57,7 @@ const plotPoint = async (id) => { //main plot point process
   const flightPath = new google.maps.Polyline({
     path: plowList[j].array,
     geodesic: true,
-    strokeColor: "rgb(" + lineColour[0] + ", " + lineColour[1] + ", " + lineColour[2] + ")",
+    strokeColor: "rgb(" + plowList[j].r + ", " + plowList[j].g + ", " + plowList[j].b + ")",
     strokeOpacity: 1.0,
     strokeWeight: 2,
   });
@@ -66,10 +66,10 @@ const plotPoint = async (id) => { //main plot point process
 };
 
 
-function sleepFor(sleepDuration){ //what does this do?
-  var now = new Date().getTime();
-  while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
-}
+// function sleepFor(sleepDuration){ //what does this do?
+//   var now = new Date().getTime();
+//   while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
+// }
 
 
 function initMap() { //display map
