@@ -9,31 +9,37 @@ document.querySelector("#map").style.borderRadius = "20px";
     return data;
   });
 
-  const flightPlanCoordinates = [
-  
-  ];
+  const flightPlanCoordinates = [];
 
+var currentPlow;
+var lineColour = [Math.floor(Math.random() * 255), Math.floor(Math.random() * 255), Math.floor(Math.random() * 255)]
+// const plow = {
+//   number: 1111,
+//   r: 102,
+//   g: 94,
+//   b: 50
+// }
 
 const plotPoint = async (id) => {
   const a = await address;
   //write code to plot the point here...
   var coordinates = [a[id].Latitude, a[id].Longitude];
-  console.log(coordinates);
-
+  console.log(a[id].Truck);
+  
+  
   const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) };
  
-  // poly = new google.maps.Polyline({
-  //   strokeColor: "#000000",
-  //   strokeOpacity: 1.0,
-  //   strokeWeight: 3,
-  // });
+  console.log(a[id].Truck)
+  if(currentPlow == a[id].Truck){
+    flightPlanCoordinates.push(myLatLng);
+  }else{
+    console.log("Cut off")
+    flightPlanCoordinates.splice(myLatLng);
+    flightPlanCoordinates.push(myLatLng);
 
-  // poly.setMap(map);
-  // const path = poly.getPath();
-  // path.push(myLatLng)
-
-  flightPlanCoordinates.push(myLatLng)
+  }
   
+  currentPlow  = a[id].Truck;
   // new google.maps.Marker({
   //   position: myLatLng,
   //   map,
@@ -42,7 +48,7 @@ const plotPoint = async (id) => {
   const flightPath = new google.maps.Polyline({
     path: flightPlanCoordinates,
     geodesic: true,
-    strokeColor: "#FF0000",
+    strokeColor: "rgb(" + lineColour[0] + ", " + lineColour[1] + ", " + lineColour[2],
     strokeOpacity: 1.0,
     strokeWeight: 2,
   });
