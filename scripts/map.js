@@ -23,7 +23,9 @@ const plotPoint = async (id) => { //main plot point process
   const a = await address;
   var coordinates = [a[id].Latitude, a[id].Longitude]; //reads coordinates
   var currentPlow = a[id].Truck; //reads truck number
+  var saltSpreader = a[id]['Spreader status'];
   console.log(currentPlow);
+  console.log(saltSpreader);
   
   const myLatLng = { lat: parseFloat(a[id].Latitude), lng:  parseFloat(a[id].Longitude) }; //sets coordinates
 
@@ -48,7 +50,7 @@ const plotPoint = async (id) => { //main plot point process
 
   const marker = new google.maps.Marker({ //create leading marker on each route
     position: myLatLng,
-    title: "Truck: " + currentPlow,
+    title: "Truck: " + currentPlow + " Spreader: " + saltSpreader,
     map: map,
     icon:{
       url: '../data/snow-plow-icon.jpg',
